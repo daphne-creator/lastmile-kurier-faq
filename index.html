@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soalan Lazim Kurier SPX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF7F3;
+    --surface: #FFFFFF;
+    --surface-alt: #F3EEE8;
+    --text: #241E1A;
+    --text-muted: #776D64;
+    --border: #E9E1D6;
+    --accent: #D74C25;
+    --accent-strong: #B93E1C;
+    --accent-soft: #FBE7DC;
+    --accent-contrast: #FFFFFF;
+    --focus: #1B6EE8;
+    --shadow: 0 1px 2px rgba(36, 30, 26, 0.04), 0 8px 24px -12px rgba(36, 30, 26, 0.12);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17130F;
+      --surface: #201A15;
+      --surface-alt: #29221B;
+      --text: #F3ECE3;
+      --text-muted: #B5A99B;
+      --border: #3A2F25;
+      --accent: #FF7C48;
+      --accent-strong: #FF9668;
+      --accent-soft: #3D2618;
+      --accent-contrast: #1A1109;
+      --focus: #6FA8FF;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #17130F;
+    --surface: #201A15;
+    --surface-alt: #29221B;
+    --text: #F3ECE3;
+    --text-muted: #B5A99B;
+    --border: #3A2F25;
+    --accent: #FF7C48;
+    --accent-strong: #FF9668;
+    --accent-soft: #3D2618;
+    --accent-contrast: #1A1109;
+    --focus: #6FA8FF;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display {
+    font-family: "Sora", "Inter", system-ui, sans-serif;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  a { color: var(--accent-strong); }
+  :root:not([data-theme="light"]) a { color: var(--accent-strong); }
+
+  ::selection { background: var(--accent-soft); }
+
+  *:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px 96px;
+  }
+
+  /* ---------- Header ---------- */
+
+  header.top {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .top-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 22px 20px 16px;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    margin-bottom: 10px;
+  }
+
+  .eyebrow .mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Sora", sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    flex: none;
+  }
+
+  h1.title {
+    font-size: clamp(24px, 5.5vw, 30px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-top: 8px;
+    max-width: 56ch;
+  }
+
+  .search-row {
+    margin-top: 18px;
+    position: relative;
+  }
+
+  .search-row svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  #search {
+    width: 100%;
+    font: inherit;
+    font-size: 15px;
+    padding: 12px 14px 12px 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface-alt);
+    color: var(--text);
+  }
+
+  #search::placeholder { color: var(--text-muted); }
+
+  .pills {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 14px 20px 16px;
+    max-width: 720px;
+    margin: 0 auto;
+    scrollbar-width: none;
+  }
+  .pills::-webkit-scrollbar { display: none; }
+
+  .pill {
+    flex: none;
+    font-family: "Inter", sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .pill[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  /* ---------- Content ---------- */
+
+  main { padding-top: 28px; }
+
+  .result-count {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+  }
+
+  .category {
+    margin-bottom: 34px;
+  }
+
+  .category-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .category-head .num {
+    font-family: "Sora", sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+    border-radius: 6px;
+    padding: 2px 7px;
+  }
+
+  .category-head h2 {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .qa-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .qa-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .qa-item[hidden] { display: none; }
+
+  .qa-item button.q {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    background: none;
+    border: none;
+    padding: 15px 16px;
+    cursor: pointer;
+  }
+
+  .qa-item button.q .chev {
+    margin-left: auto;
+    flex: none;
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+  }
+
+  .qa-item[data-open="true"] button.q .chev { transform: rotate(180deg); }
+
+  .qa-item .a-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.24s ease;
+  }
+
+  .qa-item[data-open="true"] .a-wrap { grid-template-rows: 1fr; }
+
+  .qa-item .a-inner { overflow: hidden; }
+
+  .qa-item .a {
+    padding: 0 16px 17px 16px;
+    color: var(--text);
+    font-size: 14.5px;
+  }
+
+  .qa-item .a p { margin: 0 0 10px; }
+  .qa-item .a p:last-child { margin-bottom: 0; }
+  .qa-item .a ul { margin: 8px 0 10px; padding-left: 20px; }
+  .qa-item .a li { margin-bottom: 5px; }
+  .qa-item .a strong { color: var(--text); }
+  .qa-item .a .tag {
+    display: inline-block;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 1px 8px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+  }
+
+  .mini-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 12px;
+    font-size: 13.5px;
+  }
+  .mini-table th, .mini-table td {
+    text-align: left;
+    padding: 7px 9px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .mini-table th {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .table-scroll { overflow-x: auto; }
+
+  .warn-box {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 10px 0;
+    font-size: 13.5px;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+  }
+  .no-results[hidden] { display: none; }
+
+  footer {
+    max-width: 720px;
+    margin: 40px auto 0;
+    padding: 20px 20px 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .qa-item .a-wrap, .qa-item button.q .chev { transition: none; }
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="eyebrow"><span class="mark">S</span> Rujukan Dalaman &middot; Kurier SPX</div>
+    <h1 class="title">Soalan Lazim Kurier</h1>
+    <p class="subtitle">Rujukan pantas untuk recruiter terangkan SOP kerja kepada calon kurier LM &mdash; cara penghantaran, bayaran COD, POD, aduan pelanggan dan lain-lain.</p>
+    <div class="search-row">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input id="search" type="text" placeholder="Cari soalan, contoh: virtual account, POD, aduan..." autocomplete="off">
+    </div>
+  </div>
+  <nav class="pills" id="pills" aria-label="Tapis ikut kategori"></nav>
+</header>
+
+<div class="wrap">
+  <main>
+    <p class="result-count" id="resultCount"></p>
+    <div id="categories"></div>
+    <div class="no-results" id="noResults" hidden>Tiada soalan sepadan. Cuba kata kunci lain.</div>
+  </main>
+
+  <footer>
+    Rujukan ini disediakan untuk membantu recruiter menerangkan SOP kepada calon kurier secara ringkas. Untuk butiran penuh dan terkini, sila rujuk garis panduan rasmi SPX Express atau supervisor hub. Kemas kini terakhir: 27 Ogos 2026.
+  </footer>
+</div>
+
+<script>
+  const DATA = [
+    {
+      id: "aliran",
+      title: "Aliran Kerja Penghantaran",
+      items: [
+        {
+          q: "Apakah langkah-langkah asas dalam proses penghantaran satu bungkusan?",
+          a: `<ol style="margin:8px 0 10px;padding-left:20px;">
+                <li><strong>Ambil barang di hub</strong> &mdash; kira jumlah bungkusan ikut senarai AT sebelum imbas QR.</li>
+                <li>Sistem hantar mesej <strong>"delivering"</strong> automatik kepada pembeli.</li>
+                <li>Kurier <strong>menghantar</strong> ke lokasi pembeli.</li>
+                <li><strong>Ambil gambar POD</strong> (bukti penghantaran).</li>
+                <li><strong>Serahkan</strong> bungkusan kepada pembeli.</li>
+                <li><strong>Muat naik e-POD</strong> dalam Driver App.</li>
+                <li><strong>Kemas kini status</strong> ke "Delivered" &mdash; pastikan tracking number (TN) sama dengan AWB.</li>
+                <li>Sistem hantar mesej <strong>"delivered"</strong> automatik kepada pembeli.</li>
+              </ol>
+              <p>Jika ada aduan pembeli selepas itu, proses <span class="tag">Driver Ticket</span> akan bermula &mdash; lihat kategori "Aduan Pelanggan" di bawah.</p>`
+        },
+        {
+          q: "Bolehkah kurier imbas QR bungkusan sebelum mengira jumlahnya?",
+          a: `<p>Tidak. Kira dahulu jumlah bungkusan yang diterima dan pastikan ia sepadan dengan senarai AT (assignment task) dalam PDA sorter <em>sebelum</em> mengimbas QR. Jika bilangan tidak cukup atau terlebih, maklumkan Supervisor / Hub Lead yang bertugas dengan segera.</p>`
+        }
+      ]
+    },
+    {
+      id: "cod",
+      title: "Bayaran COD (Cash on Delivery)",
+      items: [
+        {
+          q: "Bila kurier boleh minta bayaran COD daripada pembeli?",
+          a: `<p>Hanya <strong>apabila tiba di lokasi pembeli</strong>. Jangan minta bayaran lebih awal, dan jangan abaikan percubaan penghantaran walaupun pembeli tidak membalas mesej "delivering".</p>`
+        },
+        {
+          q: "Apakah cara pembeli boleh buat bayaran COD?",
+          a: `<ul>
+                <li><strong>Tunai</strong> terus kepada kurier &mdash; sediakan duit baki (small change) dan disyorkan guna beg berasingan untuk wang COD.</li>
+                <li><strong>Pindahan bank atas talian</strong> (online transfer) ke akaun Virtual Account kurier sahaja.</li>
+              </ul>`
+        },
+        {
+          q: "Apa itu Virtual Account dan apa faedahnya kepada kurier?",
+          a: `<p>Virtual Account ialah satu siri nombor akaun bank unik (CIMB) yang ditetapkan kepada setiap kurier/rider berdasarkan Driver ID, berkait terus dengan akaun bank utama COD SPX. Format: <strong>987350000 + Driver ID (5 digit)</strong> &mdash; contoh Driver ID 1234 jadi 01234.</p>
+              <p>Faedahnya:</p>
+              <ul>
+                <li>Boleh jejak transaksi harian ikut Driver ID, tarikh dan masa.</li>
+                <li>Transaksi selamat tanpa perlu guna akaun bank peribadi.</li>
+                <li>Tiada had transaksi.</li>
+              </ul>`
+        },
+        {
+          q: "Kalau duit baki tak cukup untuk pulangkan kepada pembeli, apa kena buat?",
+          a: `<p>Kurier <strong>diminta pulangkan wang secepat mungkin</strong> melalui pindahan bank atas talian atau ATM ke pembeli.</p>`
+        },
+        {
+          q: "Apa yang kurier TIDAK BOLEH buat langsung berkaitan wang COD?",
+          a: `<div class="warn-box">Jangan meminjam wang pembeli, jangan tidak memulangkan baki COD, dan jangan melakukan sebarang perlakuan tidak sopan kepada pembeli. Kesalahan ini akan dikenakan <strong>tindakan disiplin yang serius</strong>.</div>`
+        },
+        {
+          q: "Macam mana kurier serahkan (settle) wang COD kepada SPX melalui Driver App?",
+          a: `<p>Buka <strong>Driver App &rarr; Ticket Center &rarr; COD Settlement</strong>, pilih order/tiket berkenaan, pilih kaedah bayaran &mdash; <strong>DuitNow Pay</strong> (disyorkan, sehingga 10 kali sehari) atau <strong>Bank Transfer</strong> terus ke akaun SPX &mdash; lengkapkan bayaran ikut arahan, dan sahkan status di <strong>Ticket Record</strong>. Jangan tekan "Cancel" atau "Pay Again" jika wang sudah ditolak dari bank.</p>`
+        }
+      ]
+    },
+    {
+      id: "tuntutan",
+      title: "Tuntutan Minyak & Tol",
+      items: [
+        {
+          q: "Macam mana nak buat tuntutan minyak (fuel claim)?",
+          a: `<p>Semua tuntutan minyak &amp; tol untuk kurier Wilayah Barat (West Malaysia) FT mesti dihantar melalui borang <strong>"WM SPX Fuel / Toll Claim Form"</strong> (Google Form) sahaja, berkuat kuasa 21 Oktober 2025:</p>
+              <p><a href="https://forms.gle/jmVVckqf2evejKkx5" target="_blank" rel="noopener">forms.gle/jmVVckqf2evejKkx5</a></p>
+              <div class="warn-box">Tuntutan yang dihantar melalui saluran lain (bukan borang ini) dianggap <strong>tidak sah</strong> dan tidak akan diproses.</div>`
+        },
+        {
+          q: "Perlukah kurier simpan resit untuk tuntutan minyak?",
+          a: `<p>Ya, wajib. Garis panduan resit yang perlu dipatuhi:</p>
+              <ul>
+                <li><strong>Satu resit untuk satu penyerahan (submission)</strong> &mdash; tiada kongsi atau guna semula resit yang sama.</li>
+                <li>Jumlah tuntutan mesti <strong>ikut tepat</strong> seperti pada resit.</li>
+                <li>Hanya <strong>resit asli (genuine)</strong> dengan tulisan/cetakan yang jelas kelihatan.</li>
+                <li>Tarikh, nombor resit, jumlah minyak dipam dan jumlah resit <strong>mesti kelihatan jelas dan tepat (tally)</strong>.</li>
+                <li>Jangan masukkan simbol mata wang <strong>"RM"</strong> semasa mengisi jumlah tuntutan.</li>
+                <li>Jika resit ada item bukan minyak (contoh: makanan, rokok, minuman), <strong>tolak/keluarkan</strong> jumlah itu &mdash; isi jumlah bahagian minyak sahaja.</li>
+              </ul>`
+        },
+        {
+          q: "Jenis resit apa yang diterima untuk tuntutan?",
+          a: `<p>Hanya <strong>resit FINAL</strong> (selepas transaksi selesai, ada nombor invois) yang diterima. Resit <strong>Pre-Authorization atau Pre-Payment TIDAK diterima</strong> &mdash; ini biasanya resit sementara yang dikeluarkan pam petrol sebelum transaksi selesai sepenuhnya.</p>
+              <div class="table-scroll"><table class="mini-table">
+                <tr><th>Jenis resit</th><th>Sah untuk tuntutan?</th></tr>
+                <tr><td>Pre-Authorisation (ada kod "pre auth")</td><td>Tidak sah</td></tr>
+                <tr><td>Pre-Payment (sebelum transaksi selesai)</td><td>Tidak sah</td></tr>
+                <tr><td>Final Receipt (ada nombor invois &amp; jumlah muktamad)</td><td>Sah &mdash; ini yang perlu dimuat naik</td></tr>
+              </table></div>`
+        },
+        {
+          q: "Adakah tuntutan reload Touch 'n Go (T&G) diterima?",
+          a: `<p>Tidak. Tuntutan untuk <strong>reload T&amp;G tidak diterima</strong> &mdash; hanya resit <strong>penggunaan (usage)</strong> T&amp;G yang layak dituntut.</p>`
+        },
+        {
+          q: "Siapa yang TIDAK layak buat tuntutan minyak?",
+          a: `<p><strong>Rider dan LM driver yang menggunakan kenderaan SPX</strong> (kenderaan syarikat) tidak layak membuat tuntutan minyak &mdash; tuntutan hanya untuk kurier yang menggunakan kenderaan sendiri.</p>`
+        },
+        {
+          q: "Apa akan berlaku jika tuntutan tidak ikut garis panduan atau guna resit berulang?",
+          a: `<div class="warn-box">Tuntutan yang gagal memenuhi garis panduan boleh <strong>ditolak mengikut budi bicara SPX Express</strong>. Sebarang tuntutan yang didapati <strong>guna semula / berkongsi resit, atau menyalahgunakan jumlah tuntutan</strong> akan dikenakan tindakan tatatertib, sehingga dan termasuk <strong>pemberhentian</strong>.</div>`
+        }
+      ]
+    },
+    {
+      id: "pod",
+      title: "POD (Bukti Penghantaran)",
+      items: [
+        {
+          q: "Apa itu POD?",
+          a: `<p>POD (Proof of Delivery) ialah gambar bukti yang kurier ambil semasa menghantar bungkusan untuk mengesahkan penghantaran itu sah. Ia mesti diambil dan dimuat naik <strong>pada masa dan lokasi penghantaran sebenar</strong> &mdash; POD dari hari lain akan diklasifikasikan sebagai "Improper POD".</p>`
+        },
+        {
+          q: "Apakah 3 gambar POD asas yang wajib diambil?",
+          a: `<ol style="margin:8px 0 10px;padding-left:20px;">
+                <li><strong>Lokasi bungkusan / penerima</strong> dengan nombor rumah atau unit kelihatan jelas.</li>
+                <li><strong>AWB (label bungkusan)</strong> yang jelas dan tidak kabur.</li>
+                <li><strong>Persekitaran lokasi penghantaran</strong> (nombor / papan tanda / nama bangunan atau blok) &mdash; terutamanya jika lokasi tiada nombor unit yang jelas.</li>
+              </ol>`
+        },
+        {
+          q: "Apa beza POD yang sah (Good POD) dengan yang tidak sah (Bad POD)?",
+          a: `<p>Setiap POD dinilai berdasarkan 5 kriteria saringan: <strong>kualiti gambar, bungkusan, AWB, lokasi</strong> dan <strong>bukti penerimaan</strong>. Semakin banyak kriteria yang gagal, semakin teruk tahapnya (Tier 1 = terbaik, Tier 5 = terburuk).</p>
+              <div class="warn-box">Setiap kes <strong>Bad POD</strong> dikenakan <strong>penalti RM15</strong>. Jika ada aduan pembeli yang disahkan berkaitan Bad POD tersebut, kurier boleh dikenakan Surat Amaran dan potongan penuh (Full Clawback).</div>`
+        },
+        {
+          q: "Kenapa POD saya boleh dianggap tidak sah walaupun sudah ambil gambar?",
+          a: `<p>Sebab-sebab biasa POD ditolak:</p>
+              <ul>
+                <li>Gambar gelap, kabur, silau atau hitam sepenuhnya.</li>
+                <li>Tracking number (TN) dalam gambar AWB tidak sepadan dengan sistem / Driver App.</li>
+                <li>Tiada nombor rumah, unit, atau nama bangunan yang kelihatan.</li>
+                <li>Gambar yang dimuat naik adalah dari hari lain (Improper POD).</li>
+                <li>Satu gambar mengandungi lebih daripada 1 AWB semasa guna fungsi "Batch Delivery".</li>
+              </ul>`
+        },
+        {
+          q: "Macam mana POD untuk lokasi khas seperti kondo, kedai, mailroom, pop-box/loker atau pejabat?",
+          a: `<p>Prinsip 3 gambar POD (lokasi, AWB, persekitaran) tetap sama &mdash; cuma gambar "persekitaran" berbeza ikut jenis lokasi:</p>
+              <div class="table-scroll"><table class="mini-table">
+                <tr><th>Jenis lokasi</th><th>Apa perlu ditangkap dalam gambar persekitaran</th></tr>
+                <tr><td>Rumah / kedai dengan nombor</td><td>Nombor rumah / unit yang jelas</td></tr>
+                <tr><td>Kondominium</td><td>Nama lokasi kondo di pintu masuk / lobi</td></tr>
+                <tr><td>Rumah tanah lot / kedai lama tanpa nombor</td><td>Keseluruhan bangunan supaya lokasi dapat disahkan</td></tr>
+                <tr><td>Mailroom / peti surat</td><td>Nombor peti surat atau blok (sama seperti di AWB)</td></tr>
+                <tr><td>Pop-box / loker</td><td>Nombor loker yang digunakan</td></tr>
+                <tr><td>Guardhouse / pejabat / universiti / front desk</td><td>Penerima (pengawal / staf) menerima bungkusan, atau nama bangunan</td></tr>
+                <tr><td>Bungkusan "bulky" (besar)</td><td>Lokasi bungkusan diletakkan + identiti lokasi (bilik peti surat, nombor rumah, dsb.)</td></tr>
+              </table></div>`
+        }
+      ]
+    },
+    {
+      id: "rts",
+      title: "Barang RTS (Return to Seller)",
+      items: [
+        {
+          q: "Apa itu barang RTS / RRPU?",
+          a: `<p>Bungkusan yang gagal dihantar kepada pembeli dan perlu <strong>dipulangkan kepada penjual atau gudang</strong>.</p>`
+        },
+        {
+          q: "Apa gambar POD yang diperlukan untuk penghantaran RTS?",
+          a: `<ol style="margin:8px 0 10px;padding-left:20px;">
+                <li>Gambar bungkusan di tempat ia diletakkan.</li>
+                <li>Gambar AWB yang jelas.</li>
+                <li>Gambar lokasi penghantaran / premis (nama / nombor).</li>
+                <li>Gambar perbualan mesej WhatsApp dengan penjual sebagai bukti (kerana bungkusan RTS biasanya tiada Shopee Chat).</li>
+              </ol>`
+        },
+        {
+          q: "Bila kurier perlu 'on-hold' bungkusan RTS?",
+          a: `<p>Jika penjual tidak menjawab panggilan telefon, tiada sesiapa yang boleh menerima bungkusan, atau tiada nama bangunan / nombor / blok di lokasi.</p>`
+        },
+        {
+          q: "Kalau ada beberapa bungkusan RTS ke lokasi yang sama, boleh guna Batch Delivery?",
+          a: `<div class="warn-box">Tidak. Kurier <strong>mesti menghantar bungkusan satu per satu</strong> untuk mengambil POD, dan memuat naik e-POD <strong>di lokasi penghantaran</strong> (bukan di hub SPX), lengkap dengan gambar AWB masing-masing bagi setiap bungkusan.</div>`
+        }
+      ]
+    },
+    {
+      id: "aduan",
+      title: "Aduan Pelanggan & Driver Ticket",
+      items: [
+        {
+          q: "Apa itu Driver Ticket?",
+          a: `<p>Apabila HQ menerima aduan daripada pembeli tentang sesuatu penghantaran, HQ akan mencipta <strong>tiket</strong> dan menugaskannya kepada kurier berkenaan melalui Driver App untuk disiasat.</p>`
+        },
+        {
+          q: "Berapa lama kurier perlu respons Driver Ticket?",
+          a: `<p>Dalam masa <strong>24 jam</strong>. Kurier perlu serahkan POD atau maklumat lain yang diperlukan sebagai bukti. HQ akan membuat keputusan siasatan berdasarkan bukti yang diberikan.</p>`
+        },
+        {
+          q: "Apa kesan jika kurier tidak respons, lewat respons, atau POD didapati tidak sah?",
+          a: `<p>Bergantung kepada sama ada kurier respons dalam masa, dan sama ada pembeli mengesahkan barang diterima:</p>
+              <div class="table-scroll"><table class="mini-table">
+                <tr><th>Situasi</th><th>Kemungkinan tindakan</th></tr>
+                <tr><td>POD sah + respons dalam 24 jam + pembeli sahkan terima</td><td>Tiada tindakan &mdash; kes ditutup</td></tr>
+                <tr><td>POD tidak sah + pembeli sahkan barang hilang / dicuri</td><td>Surat Amaran + Full Clawback</td></tr>
+                <tr><td>Tidak respons langsung dalam 24 jam</td><td>Surat Amaran + tindakan QAQC</td></tr>
+                <tr><td>POD sah tapi respons lewat (selepas 24 jam), pembeli tak sahkan</td><td>Disiasat oleh Show Cause; jika disahkan PNR &mdash; Surat Amaran</td></tr>
+              </table></div>
+              <p style="margin-top:8px;">Ringkasnya: <strong>respons cepat + POD lengkap &amp; sah</strong> adalah cara terbaik lindungi diri daripada Surat Amaran atau potongan gaji (clawback).</p>`
+        },
+        {
+          q: "Macam mana nak elak kena Surat Amaran & Clawback?",
+          a: `<ul>
+                <li>Sentiasa ambil <strong>POD yang lengkap dan sah</strong> setiap kali menghantar.</li>
+                <li><strong>Aktifkan notifikasi</strong> Driver App supaya tidak terlepas Driver Ticket.</li>
+                <li>Respons Driver Ticket <strong>dalam 24 jam</strong>.</li>
+                <li>Simpan bukti tambahan (gambar / mesej WhatsApp pembeli) sekiranya berlaku pertikaian.</li>
+              </ul>`
+        },
+        {
+          q: "Macam mana nak balas Driver Ticket dalam Driver App?",
+          a: `<p><strong>Help Center &rarr; Issue Tickets &rarr;</strong> pilih tiket berkenaan &rarr; tekan <strong>Reply</strong> &rarr; taip mesej (mesej wajib, gambar pilihan, maksimum 3 gambar) &rarr; tekan <strong>Submit</strong>. Tiket akan ditutup ("Resolved") oleh Operator, tetapi boleh dibuka semula untuk siasatan lanjut jika perlu.</p>`
+        }
+      ]
+    },
+    {
+      id: "khas",
+      title: "Pengendalian Khas & Lain-lain",
+      items: [
+        {
+          q: "Apa itu barang 'Expedite' (tanda 'E')?",
+          a: `<p>Bungkusan dengan tanda huruf <strong>"E"</strong> bermaksud keutamaan penghantaran yang lebih tinggi. Barang ini mesti diutamakan semasa sequencing / dispatch dan <strong>wajib dihantar pada hari yang sama</strong>. Jika terpaksa dibawa pulang ke hub, maklumkan supervisor bertugas supaya ia diasingkan untuk penghantaran keesokan hari.</p>`
+        },
+        {
+          q: "Macam mana nak tambah atau ubah remark penerima dalam Driver App?",
+          a: `<p>Buka <strong>Order Info &rarr; Edit</strong> pada bahagian Remark &rarr; pilih atau batalkan kenyataan sedia ada, atau taip kenyataan baharu &rarr; tekan <strong>Submit</strong>. Remark akan disusun ikut yang terkini di atas. <em>Nota: kurier tidak dibenarkan mengedit remark yang dimasukkan oleh pihak Ops.</em></p>`
+        },
+        {
+          q: "Apa itu '2nd trip' dan bila kurier wajib buat?",
+          a: `<p>Kurier akan menerima mesej WhatsApp automatik meminta pulang ke hub untuk trip penghantaran kedua. Kurier <strong>wajib patuh</strong> jika kesemua syarat berikut dipenuhi:</p>
+              <ul>
+                <li>Masih belum mencapai sasaran produktiviti yang ditetapkan hub.</li>
+                <li>Tiada kes kecemasan yang memerlukan kehadiran kurier.</li>
+                <li>Hub boleh dicapai dalam tempoh kurang 30 minit dari lokasi semasa.</li>
+                <li>Belum melebihi waktu kerja 9 jam sehari.</li>
+              </ul>`
+        }
+      ]
+    },
+    {
+      id: "kecemasan",
+      title: "Kemalangan Jalan Raya",
+      items: [
+        {
+          q: "Apa yang kurier perlu buat jika terlibat kemalangan jalan raya?",
+          a: `<ol style="margin:8px 0 10px;padding-left:20px;">
+                <li>Periksa sama ada anda atau sesiapa memerlukan rawatan perubatan &mdash; bertenang, hubungi <strong>999</strong> jika ada kecederaan, dan laporkan kepada penyelia dengan lokasi.</li>
+                <li>Kekal selamat &mdash; pastikan kenderaan tidak menghalang jalan, hidupkan lampu kecemasan / segitiga amaran, kunci kenderaan dan pastikan kargo selamat.</li>
+                <li>Ambil gambar kedua-dua kenderaan yang terlibat dan kongsikan dengan Hub Lead. <em>Jangan mengaku salah, bersetuju, atau menandatangani apa-apa dokumen di tempat kejadian.</em></li>
+                <li>Hubungi <strong>Maintenance Team SPX di +6 019-308 6107</strong> untuk bantuan menunda kenderaan.</li>
+                <li>Bertukar maklumat peribadi dengan pihak lain: nombor kad pengenalan, nombor telefon &amp; alamat, model &amp; nombor pendaftaran kenderaan, syarikat insurans (jika boleh).</li>
+                <li>Buat laporan polis dalam masa <strong>24 jam</strong> &mdash; kegagalan berbuat demikian boleh dikenakan saman dan tindakan tatatertib.</li>
+                <li>Isi Borang Kemalangan rasmi (dapatkan link daripada supervisor / Hub Lead).</li>
+                <li>Failkan tuntutan insurans &mdash; hubungi Pasukan Penyelenggaraan dan serahkan laporan polis, gambar, dan semua maklumat yang dikumpulkan.</li>
+              </ol>`
+        }
+      ]
+    },
+    {
+      id: "penilaian",
+      title: "Penilaian Pengetahuan SOP",
+      items: [
+        {
+          q: "Adakah semua kurier wajib buat penilaian pengetahuan SOP?",
+          a: `<p>Ya. Semua kurier wajib melengkapkan <strong>SPX Express Courier ePOD Assessment</strong> sebagai sebahagian daripada latihan SOP. Dapatkan link atau kod QR terkini daripada recruiter anda atau supervisor hub sebelum mula bertugas.</p>`
+        }
+      ]
+    }
+  ];
+
+  const categoriesEl = document.getElementById('categories');
+  const pillsEl = document.getElementById('pills');
+  const searchEl = document.getElementById('search');
+  const noResultsEl = document.getElementById('noResults');
+  const resultCountEl = document.getElementById('resultCount');
+
+  let activeCategory = 'all';
+  let itemCounter = 0;
+
+  function renderPills() {
+    const allPill = document.createElement('button');
+    allPill.className = 'pill';
+    allPill.textContent = 'Semua';
+    allPill.setAttribute('aria-pressed', 'true');
+    allPill.addEventListener('click', () => setCategory('all'));
+    pillsEl.appendChild(allPill);
+
+    DATA.forEach(cat => {
+      const p = document.createElement('button');
+      p.className = 'pill';
+      p.textContent = cat.title;
+      p.setAttribute('aria-pressed', 'false');
+      p.dataset.cat = cat.id;
+      p.addEventListener('click', () => setCategory(cat.id));
+      pillsEl.appendChild(p);
+    });
+  }
+
+  function setCategory(id) {
+    activeCategory = id;
+    [...pillsEl.children].forEach(p => {
+      const isActive = (id === 'all' && p.textContent === 'Semua') || p.dataset.cat === id;
+      p.setAttribute('aria-pressed', String(isActive));
+    });
+    applyFilter();
+  }
+
+  function renderCategories() {
+    DATA.forEach((cat, ci) => {
+      const section = document.createElement('section');
+      section.className = 'category';
+      section.dataset.cat = cat.id;
+
+      const head = document.createElement('div');
+      head.className = 'category-head';
+      head.innerHTML = `<span class="num">${String(ci + 1).padStart(2, '0')}</span><h2>${cat.title}</h2>`;
+      section.appendChild(head);
+
+      const list = document.createElement('div');
+      list.className = 'qa-list';
+
+      cat.items.forEach(item => {
+        itemCounter++;
+        const id = 'qa-' + itemCounter;
+        const el = document.createElement('div');
+        el.className = 'qa-item';
+        el.dataset.open = 'false';
+        el.dataset.search = (item.q + ' ' + item.a).toLowerCase().replace(/<[^>]+>/g, ' ');
+
+        el.innerHTML = `
+          <button class="q" aria-expanded="false" aria-controls="${id}">
+            <span>${item.q}</span>
+            <svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="a-wrap" id="${id}">
+            <div class="a-inner"><div class="a">${item.a}</div></div>
+          </div>`;
+
+        const btn = el.querySelector('button.q');
+        btn.addEventListener('click', () => {
+          const isOpen = el.dataset.open === 'true';
+          el.dataset.open = String(!isOpen);
+          btn.setAttribute('aria-expanded', String(!isOpen));
+        });
+
+        list.appendChild(el);
+      });
+
+      section.appendChild(list);
+      categoriesEl.appendChild(section);
+    });
+  }
+
+  function applyFilter() {
+    const q = searchEl.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    document.querySelectorAll('.category').forEach(section => {
+      const catMatches = activeCategory === 'all' || section.dataset.cat === activeCategory;
+      let sectionHasVisible = false;
+
+      section.querySelectorAll('.qa-item').forEach(item => {
+        const textMatches = !q || item.dataset.search.includes(q);
+        const show = catMatches && textMatches;
+        item.hidden = !show;
+        if (show) { sectionHasVisible = true; visibleCount++; }
+      });
+
+      section.style.display = sectionHasVisible ? '' : 'none';
+    });
+
+    noResultsEl.hidden = visibleCount !== 0;
+    resultCountEl.textContent = q
+      ? `${visibleCount} soalan sepadan dengan "${searchEl.value.trim()}"`
+      : '';
+  }
+
+  renderPills();
+  renderCategories();
+  searchEl.addEventListener('input', applyFilter);
+</script>
+
+</body>
+</html>
