@@ -91,6 +91,10 @@
     padding: 0 20px 96px;
   }
 
+  .intro {
+    padding-top: 22px;
+  }
+
   /* ---------- Header ---------- */
 
   header.top {
@@ -104,7 +108,7 @@
   .top-inner {
     max-width: 720px;
     margin: 0 auto;
-    padding: 22px 20px 16px;
+    padding: 10px 20px;
   }
 
   .back-link {
@@ -167,7 +171,7 @@
   }
 
   .search-row {
-    margin-top: 18px;
+    margin-top: 0;
     position: relative;
   }
 
@@ -387,8 +391,8 @@
 </style>
 </head>
 <body>
-<header class="top">
-  <div class="top-inner">
+<div class="wrap">
+  <div class="intro">
     <div class="onboarding-links">
       <a class="back-link" href="lm-ft.html">Onboarding LM-FT <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
       <a class="back-link" href="lm-pt.html">Onboarding LM-PT <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
@@ -396,6 +400,11 @@
     <div class="eyebrow"><span class="mark">S</span> Rujukan Dalaman &middot; Kurier SPX (LM)</div>
     <h1 class="title">Soalan Lazim Kurier</h1>
     <p class="subtitle">Rujukan pantas untuk recruiter terangkan SOP kerja kepada calon kurier LM &mdash; cara penghantaran, bayaran COD, POD, aduan pelanggan dan lain-lain.</p>
+  </div>
+</div>
+
+<header class="top">
+  <div class="top-inner">
     <div class="search-row">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       <input id="search" type="text" placeholder="Cari soalan, contoh: virtual account, POD, aduan..." autocomplete="off">
