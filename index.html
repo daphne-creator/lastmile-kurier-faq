@@ -107,6 +107,25 @@
     padding: 22px 20px 16px;
   }
 
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 14px;
+  }
+  .back-link:hover { color: var(--accent-strong); }
+  .onboarding-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .onboarding-links .back-link { margin-bottom: 0; }
+
   .eyebrow {
     display: flex;
     align-items: center;
@@ -370,7 +389,11 @@
 <body>
 <header class="top">
   <div class="top-inner">
-    <div class="eyebrow"><span class="mark">S</span> Rujukan Dalaman &middot; Kurier SPX</div>
+    <div class="onboarding-links">
+      <a class="back-link" href="lm-ft.html">Onboarding LM-FT <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      <a class="back-link" href="lm-pt.html">Onboarding LM-PT <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+    </div>
+    <div class="eyebrow"><span class="mark">S</span> Rujukan Dalaman &middot; Kurier SPX (LM)</div>
     <h1 class="title">Soalan Lazim Kurier</h1>
     <p class="subtitle">Rujukan pantas untuk recruiter terangkan SOP kerja kepada calon kurier LM &mdash; cara penghantaran, bayaran COD, POD, aduan pelanggan dan lain-lain.</p>
     <div class="search-row">
