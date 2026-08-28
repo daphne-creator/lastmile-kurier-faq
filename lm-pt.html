@@ -260,14 +260,15 @@
     box-shadow: var(--shadow);
   }
   .qa-img-cap { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+  .qa-img-wide { max-width: 420px; }
   .qa-img-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
     gap: 10px;
     margin: 12px 0 4px;
   }
-  .qa-img-grid .qa-img-wrap { margin: 0; }
-  .qa-img-grid .qa-img { border-radius: 10px; }
+  .qa-img-grid .qa-img-wrap { margin: 0; position: relative; }
+  .qa-img-grid .qa-img { border-radius: 10px; display: block; }
   .qa-img-grid .qa-img-cap { font-size: 11px; }
   .qa-img-step {
     display: inline-block;
@@ -281,6 +282,14 @@
     line-height: 16px;
     text-align: center;
     margin-right: 4px;
+    flex: none;
+  }
+  .qa-img-grid .qa-img-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.4);
+    margin-right: 0;
   }
   .no-results { text-align: center; padding: 60px 20px; color: var(--text-muted); }
   .no-results[hidden] { display: none; }
@@ -377,13 +386,13 @@
               </ol>
               <p>Rujuk kategori "Denda &amp; Tuntutan Ganti Rugi" untuk penalti berkaitan POD yang salah atau tiada POP.</p>
               <div class="qa-img-grid">
-                <div class="qa-img-wrap"><img class="qa-img" src="images/epod-1.jpg" alt="Skrin Order Info dalam Driver App" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">1</span>Buka Order Info, pilih TN</p></div>
-                <div class="qa-img-wrap"><img class="qa-img" src="images/epod-2.jpg" alt="Skrin Select Recipient Type" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">2</span>Pilih Select Recipient Type</p></div>
-                <div class="qa-img-wrap"><img class="qa-img" src="images/epod-3.jpg" alt="Skrin Proof of Delivery, isi Recipient Name" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">3</span>Isi Recipient Name</p></div>
-                <div class="qa-img-wrap"><img class="qa-img" src="images/epod-4.jpg" alt="Pilih Camera atau Choose from Album untuk gambar POD" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">3</span>Muat naik gambar POD</p></div>
-                <div class="qa-img-wrap"><img class="qa-img" src="images/epod-5.jpg" alt="Gambar POD berjaya dimuat naik" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">3</span>Gambar POD dimuat naik</p></div>
-                <div class="qa-img-wrap"><img class="qa-img" src="images/epod-6.jpg" alt="Skrin tandatangan penerima untuk Proof of Delivery" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">5</span>Tandatangan penerima (jika ada)</p></div>
-                <div class="qa-img-wrap"><img class="qa-img" src="images/epod-7.jpg" alt="Skrin Recommend Address" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">6</span>Kemas kini Recommend Address</p></div>
+                <div class="qa-img-wrap"><span class="qa-img-step qa-img-badge">1</span><img class="qa-img" src="images/epod-1.jpg" alt="Pilih TN pada 'To-do'" loading="lazy"></div>
+                <div class="qa-img-wrap"><span class="qa-img-step qa-img-badge">2</span><img class="qa-img" src="images/epod-2.jpg" alt="Pilih jenis penerima" loading="lazy"></div>
+                <div class="qa-img-wrap"><span class="qa-img-step qa-img-badge">3</span><img class="qa-img" src="images/epod-3.jpg" alt="Pilih gambar" loading="lazy"></div>
+                <div class="qa-img-wrap"><span class="qa-img-step qa-img-badge">3</span><img class="qa-img" src="images/epod-4.jpg" alt="POD Pertama: Muat naik gambar POD lokasi/penerima" loading="lazy"></div>
+                <div class="qa-img-wrap"><span class="qa-img-step qa-img-badge">4</span><img class="qa-img" src="images/epod-5.jpg" alt="POD kedua muat naik gambar WhatsApp (mesej + AWB)" loading="lazy"></div>
+                <div class="qa-img-wrap"><span class="qa-img-step qa-img-badge">5</span><img class="qa-img" src="images/epod-6.jpg" alt="Tandatangan penerima (jika ada)" loading="lazy"></div>
+                <div class="qa-img-wrap"><span class="qa-img-step qa-img-badge">6</span><img class="qa-img" src="images/epod-7.jpg" alt="Isi alamat baru (jika ada), klik Confirm" loading="lazy"></div>
               </div>` }
         ]
       },
