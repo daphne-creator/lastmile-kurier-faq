@@ -104,11 +104,11 @@
     gap: 6px;
     font-size: 13.5px;
     font-weight: 600;
-    color: var(--text-muted);
+    color: var(--text-muted) !important;
     text-decoration: none;
     margin-bottom: 14px;
   }
-  .back-link:hover { color: var(--accent-strong); }
+  .back-link:hover { color: var(--accent-strong) !important; }
   .eyebrow {
     display: flex;
     align-items: center;
@@ -160,15 +160,15 @@
     font-weight: 600;
     padding: 9px 14px;
     border-radius: 10px;
-    border: 1px solid var(--border);
-    background: var(--surface-alt);
-    color: var(--text);
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: var(--accent-contrast) !important;
     text-decoration: none;
   }
   .pdf-btn.primary {
     background: var(--accent);
     border-color: var(--accent);
-    color: var(--accent-contrast);
+    color: var(--accent-contrast) !important;
   }
   .search-row { margin-top: 18px; position: relative; }
   .search-row svg {
