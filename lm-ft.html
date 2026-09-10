@@ -237,6 +237,20 @@
     display: inline-block; font-size: 12.5px; font-weight: 600; padding: 1px 8px;
     border-radius: 999px; background: var(--accent-soft); color: var(--accent-strong);
   }
+  .notice-box {
+    background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 10px;
+    padding: 12px 14px; margin: 10px 0; font-size: 14px;
+  }
+  .notice-box .notice-label {
+    display: block; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em;
+    color: var(--accent-strong); margin-bottom: 4px;
+  }
+  .example-box {
+    background: var(--surface-alt); border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 14px;
+  }
+  .example-box .example-label { display: block; font-weight: 800; font-size: 12.5px; margin-bottom: 6px; }
+  .example-box .example-step { margin: 0 0 4px; }
+  .example-box .example-result { margin: 8px 0 0; font-weight: 700; }
   .mini-table { width: 100%; border-collapse: collapse; margin: 8px 0 12px; font-size: 13.5px; }
   .mini-table th, .mini-table td {
     text-align: left; padding: 7px 9px; border-bottom: 1px solid var(--border); vertical-align: top;
@@ -261,6 +275,7 @@
   }
   .qa-img-cap { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
   .qa-img-wide { max-width: 420px; }
+  .qa-img-grid-lg { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
   .qa-img-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
@@ -475,7 +490,19 @@
                 <li>Caj pemprosesan <strong>10%</strong> dikenakan untuk setiap permintaan pengeluaran gaji awal.</li>
                 <li>Jika bank menolak bayaran pada 7hb, bayaran akan dibawa ke 8hb; jika ditolak lagi, dibawa ke 15hb.</li>
                 <li>Kurier yang terlibat dalam isu COD atau QA/QC &mdash; <strong>semua gaji akan ditahan</strong> sehingga kes diselesaikan.</li>
-              </ul>` }
+              </ul>` },
+        { q: `Notis Penting: Macam mana ambang 50 parcel sehari dikira untuk komisen kurier FT?`, a: `<div class="notice-box">
+              <span class="notice-label">Notis Penting</span>
+              Ambang <strong>50 parcel sehari</strong> untuk layak dapat komisen dikira sebagai <strong>PURATA BULANAN</strong> &mdash; <strong>BUKAN</strong> setiap hari mesti cukup 50 parcel.
+            </div>
+            <p>Ini bermakna, walaupun ada hari anda hantar kurang daripada 50 parcel, anda masih boleh layak dapat komisen &mdash; asalkan jumlah <strong>PURATA sepanjang bulan</strong> mencapai 50 parcel sehari.</p>
+            <div class="example-box">
+              <span class="example-label">Contoh Pengiraan</span>
+              <p class="example-step">Jika anda bekerja <strong>26 hari</strong> dalam sebulan:</p>
+              <p class="example-step">26 hari &times; 50 parcel = <strong>1,300 parcel</strong></p>
+              <p class="example-result">Jika jumlah parcel yang anda hantar SEPANJANG BULAN itu melebihi 1,300 parcel, anda LAYAK dapat komisen.</p>
+            </div>
+            <p>Contoh mudah: kalau satu hari anda hantar 40 parcel dan esoknya 60 parcel, purata untuk 2 hari itu ialah 50 parcel &mdash; masih layak. Yang dikira ialah <strong>jumlah keseluruhan sebulan</strong>, bukan setiap hari secara berasingan.</p>` }
         ]
       },
       {
