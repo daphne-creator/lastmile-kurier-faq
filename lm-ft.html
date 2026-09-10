@@ -260,6 +260,10 @@
     text-transform: uppercase; letter-spacing: 0.02em;
   }
   .table-scroll { overflow-x: auto; }
+  .comm-table td, .comm-table th { font-size: 14px; }
+  .comm-table .comm-no { color: #B3261E; font-weight: 700; white-space: nowrap; }
+  .comm-table .comm-yes { color: #1E7A34; font-weight: 700; white-space: nowrap; }
+  .comm-note { color: var(--text-muted); font-size: 12.5px; }
   .warn-box {
     background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 8px;
     padding: 10px 12px; margin: 10px 0; font-size: 13.5px;
@@ -491,18 +495,31 @@
                 <li>Jika bank menolak bayaran pada 7hb, bayaran akan dibawa ke 8hb; jika ditolak lagi, dibawa ke 15hb.</li>
                 <li>Kurier yang terlibat dalam isu COD atau QA/QC &mdash; <strong>semua gaji akan ditahan</strong> sehingga kes diselesaikan.</li>
               </ul>` },
-        { q: `Notis Penting: Macam mana ambang 50 parcel sehari dikira untuk komisen kurier FT?`, a: `<div class="notice-box">
+        { q: `Notis Penting: Macam mana komisen kurier FT dikira?`, a: `<div class="notice-box">
               <span class="notice-label">Notis Penting</span>
-              Ambang <strong>50 parcel sehari</strong> untuk layak dapat komisen dikira sebagai <strong>PURATA BULANAN</strong> &mdash; <strong>BUKAN</strong> setiap hari mesti cukup 50 parcel.
+              Target sebulan: <strong>26 hari &times; 50 parcel = 1,300 parcel</strong>. Dikira <strong>SEBULAN</strong>, bukan setiap hari mesti cukup 50.
             </div>
-            <p>Ini bermakna, walaupun ada hari anda hantar kurang daripada 50 parcel, anda masih boleh layak dapat komisen &mdash; asalkan jumlah <strong>PURATA sepanjang bulan</strong> mencapai 50 parcel sehari.</p>
             <div class="example-box">
-              <span class="example-label">Contoh Pengiraan</span>
-              <p class="example-step">Jika anda bekerja <strong>26 hari</strong> dalam sebulan:</p>
-              <p class="example-step">26 hari &times; 50 parcel = <strong>1,300 parcel</strong></p>
-              <p class="example-result">Jika jumlah parcel yang anda hantar SEPANJANG BULAN itu melebihi 1,300 parcel, anda LAYAK dapat komisen.</p>
+              <span class="example-label">Paling Penting: Komisen HANYA untuk Parcel LEBIH</span>
+              <p class="example-step"><strong>1,300 parcel pertama = TIADA komisen.</strong> Itu target asas sahaja.</p>
+              <p class="example-result">Komisen dikira untuk parcel yang <strong>LEBIH daripada 1,300</strong> sahaja.</p>
             </div>
-            <p>Contoh mudah: kalau satu hari anda hantar 40 parcel dan esoknya 60 parcel, purata untuk 2 hari itu ialah 50 parcel &mdash; masih layak. Yang dikira ialah <strong>jumlah keseluruhan sebulan</strong>, bukan setiap hari secara berasingan.</p>` }
+            <div class="table-scroll">
+              <table class="mini-table comm-table">
+                <thead><tr><th>Jumlah Parcel Sebulan</th><th>Dapat Komisen?</th></tr></thead>
+                <tbody>
+                  <tr><td>1,300 parcel</td><td class="comm-no">&#10007; Tiada komisen</td></tr>
+                  <tr><td>1,301 parcel <span class="comm-note">(lebih 1)</span></td><td class="comm-yes">&#10003; Komisen untuk 1 parcel</td></tr>
+                  <tr><td>1,350 parcel <span class="comm-note">(lebih 50)</span></td><td class="comm-yes">&#10003; Komisen untuk 50 parcel</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="example-box">
+              <span class="example-label">Contoh Mudah</span>
+              <p class="example-step">Anda hantar <strong>1,320 parcel</strong> sebulan.</p>
+              <p class="example-step">1,320 &minus; 1,300 = <strong>20 parcel</strong></p>
+              <p class="example-result">Anda dapat komisen untuk <strong>20 parcel SAHAJA</strong> &mdash; bukan 1,320 parcel.</p>
+            </div>` }
         ]
       },
       {
