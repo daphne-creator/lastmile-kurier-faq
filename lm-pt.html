@@ -237,6 +237,20 @@
     display: inline-block; font-size: 12.5px; font-weight: 600; padding: 1px 8px;
     border-radius: 999px; background: var(--accent-soft); color: var(--accent-strong);
   }
+  .notice-box {
+    background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 10px;
+    padding: 12px 14px; margin: 10px 0; font-size: 14px;
+  }
+  .notice-box .notice-label {
+    display: block; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em;
+    color: var(--accent-strong); margin-bottom: 4px;
+  }
+  .example-box {
+    background: var(--surface-alt); border-radius: 10px; padding: 12px 14px; margin: 10px 0; font-size: 14px;
+  }
+  .example-box .example-label { display: block; font-weight: 800; font-size: 12.5px; margin-bottom: 6px; }
+  .example-box .example-step { margin: 0 0 4px; }
+  .example-box .example-result { margin: 8px 0 0; font-weight: 700; }
   .mini-table { width: 100%; border-collapse: collapse; margin: 8px 0 12px; font-size: 13.5px; }
   .mini-table th, .mini-table td {
     text-align: left; padding: 7px 9px; border-bottom: 1px solid var(--border); vertical-align: top;
@@ -246,6 +260,10 @@
     text-transform: uppercase; letter-spacing: 0.02em;
   }
   .table-scroll { overflow-x: auto; }
+  .comm-table td, .comm-table th { font-size: 14px; }
+  .comm-table .comm-no { color: #B3261E; font-weight: 700; white-space: nowrap; }
+  .comm-table .comm-yes { color: #1E7A34; font-weight: 700; white-space: nowrap; }
+  .comm-note { color: var(--text-muted); font-size: 12.5px; }
   .warn-box {
     background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 8px;
     padding: 10px 12px; margin: 10px 0; font-size: 13.5px;
@@ -261,6 +279,7 @@
   }
   .qa-img-cap { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
   .qa-img-wide { max-width: 420px; }
+  .qa-img-grid-lg { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
   .qa-img-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
@@ -473,7 +492,12 @@
                 <li>Caj pemprosesan <strong>20%</strong> dikenakan untuk setiap permintaan pengeluaran gaji awal &mdash; <strong>berbeza daripada kadar LM-FT (10%)</strong>.</li>
                 <li>Jika bank menolak bayaran pada 7hb, bayaran akan dibawa ke 8hb; jika ditolak lagi, dibawa ke 15hb.</li>
                 <li>Kurier yang terlibat dalam isu COD atau QA/QC &mdash; <strong>semua gaji akan ditahan</strong> sehingga kes diselesaikan.</li>
-              </ul>` }
+              </ul>` },
+        { q: `Notis Penting: Bolehkah kurier LM-PT buat tuntutan minyak atau tuntutan lain?`, a: `<div class="notice-box">
+              <span class="notice-label">Notis Penting</span>
+              <strong>Tidak.</strong> Kurier LM-PT <strong>TIDAK layak membuat sebarang tuntutan</strong> &mdash; termasuk tuntutan minyak, tol, atau apa-apa jenis tuntutan lain.
+            </div>
+            <p>Kemudahan tuntutan (fuel/toll claim) hanya untuk kurier <strong>LM-FT</strong> yang layak mengikut syarat yang ditetapkan. Ini tidak terpakai untuk kurier Separuh Masa (PT).</p>` }
         ]
       },
       {
