@@ -314,6 +314,12 @@
     box-shadow: 0 1px 4px rgba(0,0,0,.4);
     margin-right: 0;
   }
+  .login-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; margin: 12px 0 4px; }
+  .login-row .qa-img-wrap { margin: 0; }
+  .login-row .qr-wrap { width: 300px; max-width: 100%; }
+  .login-row .qr-wrap .qa-img { max-width: 300px; }
+  .login-row .shot-wrap { width: 150px; }
+  .login-row .shot-wrap .qa-img { max-width: 150px; }
   .no-results { text-align: center; padding: 60px 20px; color: var(--text-muted); }
   .no-results[hidden] { display: none; }
   footer {
@@ -374,9 +380,9 @@
                 <li>Kata laluan lalai (default): <strong>6 digit terakhir</strong> nombor telefon tersebut.</li>
               </ol>
               <div class="warn-box"><strong>Contoh:</strong> Nombor telefon 0138893456 &rarr; ID pengguna: <strong>138893456</strong>, kata laluan: <strong>893456</strong></div>
-              <div class="qa-img-grid">
-                <div class="qa-img-wrap"><img class="qa-img" src="images/login-app.jpg" alt="Imbas QR code untuk muat turun aplikasi SPX Driver v8.4.9" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">1</span>Imbas QR / muat turun app</p></div>
-                <div class="qa-img-wrap"><img class="qa-img" src="images/login-2.jpg" alt="Skrin log masuk dengan nombor telefon dan kata laluan" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">2</span>Log masuk dengan nombor & kata laluan</p></div>
+              <div class="login-row">
+                <div class="qa-img-wrap qr-wrap"><img class="qa-img" src="images/login-app.jpg" alt="Imbas QR code untuk muat turun aplikasi SPX Driver v8.4.9" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">1</span>Imbas QR / muat turun app</p></div>
+                <div class="qa-img-wrap shot-wrap"><img class="qa-img" src="images/login-2.jpg" alt="Skrin log masuk dengan nombor telefon dan kata laluan" loading="lazy"><p class="qa-img-cap"><span class="qa-img-step">2</span>Log masuk dengan nombor & kata laluan</p></div>
               </div>` },
         { q: `Bolehkah kurier kongsi ID atau kata laluan Driver App dengan orang lain?`, a: `<p><strong>Tidak, sama sekali dilarang.</strong> Kurier tidak dibenarkan berkongsi atau memberi akses ID mereka kepada sesiapa pun, termasuk rakan sekerja.</p>
               <p>Sebarang perkongsian butiran log masuk boleh dikenakan tindakan tatatertib &mdash; sehingga dan termasuk <strong>penamatan perkhidmatan</strong>.</p>` }
